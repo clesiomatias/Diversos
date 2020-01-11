@@ -13,25 +13,23 @@ def sorteiaCor():
 		cor += random.choice(lista)
 
 	return cor
+
+class Quadro(tt.Turtle):
+	def __init__(self,x, cor,analisa):
+		super().__init__()
+		self.ht()
+		self.pu()
+		self.speed(0)
+		self.shape('square')
+		self.shapesize(2,3)
+		self.color(cor)
+		self.setpos(x,-120)
+		self.onclick(analisa)
+		self.st()
+	def cor(self):
+		return self.color()
 def analisa(x,y):
-	global corEscolhida
-	if  quadros[].getturtle().color== corEscolhida:
-		print ('ok')
-		
-	else:
-		print('não',tt.getturtle().color(), '  -',corEscolhida)
-def quadro(x, cor):
-	quadro = tt.Turtle()
-	quadro.ht()
-	quadro.pu()
-	quadro.speed(0)
-	quadro.shape('square')
-	quadro.shapesize(2,3)
-	quadro.color(cor)
-	quadro.setpos(x,-120)
-	quadro.onclick(analisa)
-	quadro.st()
-	return quadro
+	print(cor())
 			
 	
 #escopo global
@@ -77,13 +75,12 @@ for i in range(6):
 				break
 	cores.append(corQuadro) #inserindo a cor na lista
 	
-quadros =[]	
+quadros=[]
 for i in range(6):#criando os quadros
 	cor_do_quadro	 = random.choice(cores)
 	cores.remove(cor_do_quadro)
-	quadros.append(quadro(x,cor_do_quadro))
+	quadros.append(Quadro(x,cor_do_quadro,analisa))
 	x+=75
-	
 
 
 
